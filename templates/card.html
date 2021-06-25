@@ -23,7 +23,8 @@
         {% else %}
         <button><a href="{{ url_for('card_view', index = index - 1) }}">&lt Previous Card </a></button>
         <button><a href="{{ url_for('card_view', index = index + 1) }}">Start Over ></a></button>
-        {% endif %}    
+        {% endif %}
+        <a href="{{ url_for('remove_card', index=index) }}">Delete Card</a>    
     </p>
 </body>
 </html>

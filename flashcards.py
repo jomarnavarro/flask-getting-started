@@ -29,6 +29,16 @@ def add_card():
         return redirect(url_for('card_view', index=len(db) - 1))
     return render_template('add_card.html')
 
+@app.route('/card/<int:index>/delete', methods=['GET', 'POST'])
+def remove_card(index):
+    valid_index = index >=0 and index < len(db)
+    if not valid_index:
+        return render_template('error.html', error=f"The card number {index} does not exist.")
+    if request.method == 'POST':
+        del db[index]
+        save_db()
+        return redirect(url_for('welcome'))
+    return render_template('remove_card.html', card=db[index])
 
 @app.route('/api/card')
 def api_card_list():
