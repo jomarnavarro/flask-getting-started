@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+</head>
+<body>
+    <h1>Welcome to my page!</h1>
+    <p>This is the demo application for the flask course
+        <em>Getting Started with Flask</em>
+        on <a href="https://www.pluralsight.com">Pluralsight</a>
+    </p>
+    <h2>Cards</h2>
+    <ul>
+        {% for card in cards %}
+        <li>
+            <a href="{{ url_for('card_view', index=loop.index0) }}">{{ card.question }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_card') }}">Create a New Card</a>
+    <img src="/static/flasklogo.png" alt="Flask Framework logo">
+    <p>{{ message }}</p>
+
+</body>
+</html>

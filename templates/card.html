@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+</head>
+<body>
+    <h1>Flash Card</h1>
+    <ul>
+        <li>English: {{card.question}}</li>
+        <li>Spanish: {{card.answer}}</li>
+    </ul>
+    <p>
+        <a href="{{ url_for('welcome') }}">Home</a>
+        {% if index == max_index %}
+        <button><a href="{{ url_for('card_view', index = index - 1) }}">&lt Previous Card </a></button>
+        <button><a href="{{ url_for('card_view', index = 0) }}">Start Over ></a></button>
+        {% elif index == 0 %}
+        <button><a href="{{ url_for('card_view', index = max_index) }}">&lt Previous Card </a></button>
+        <button><a href="{{ url_for('card_view', index = index + 1) }}">Start Over ></a></button>
+        {% else %}
+        <button><a href="{{ url_for('card_view', index = index - 1) }}">&lt Previous Card </a></button>
+        <button><a href="{{ url_for('card_view', index = index + 1) }}">Start Over ></a></button>
+        {% endif %}    
+    </p>
+</body>
+</html>
